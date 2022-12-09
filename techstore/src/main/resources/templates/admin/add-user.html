@@ -1,0 +1,20 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:insert="fragments.html :: headerfiles">
+<title>Sign Up</title>
+</head>
+<body>
+<header th:insert="fragments.html :: nav"></header>
+
+	<form id="new-product-form" th:action="@{/signup}" method="post" style="margin-right: auto; margin-left: auto;">
+		<h3>Добавить пользователя</h3>
+
+		<input type="text" id="firstName" name="firstName" placeholder="Имя">
+		<input type="text" id="lastName" name="lastName" placeholder="Фамилия">
+		<input type="email" id="email" name="email" placeholder="Email">
+		<input type="password" id="password" name="password" placeholder="Пароль">
+		<input type="text" id="role" name="role" placeholder="Роль">
+		<button type="submit">Добавить</button>
+	</form>
+
+</body>
+</html>

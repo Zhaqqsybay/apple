@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:insert="fragments.html :: headerfiles">
+</head>
+<body>
+<div class="main-content">
+	<header th:insert="fragments.html :: nav"></header>
+	<div class="op-links">
+		<a href="#" th:href="@{/manager/category-form}">Управлять категориями</a>
+		<a href="#" th:href="@{/manager/product-form}">Управлять продуктами</a>
+		</div>
+</div>
+</body>
+</html>

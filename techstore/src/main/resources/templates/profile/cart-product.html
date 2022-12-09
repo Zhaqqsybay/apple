@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:insert="fragments.html :: headerfiles">
+</head>
+<body>
+<div class="main-content">
+	<header th:insert="fragments.html :: nav"></header>
+	<div class="card-menu">
+		<div style="text-align: center">
+		<h1>Ваша Корзина</h1>
+		<h2 style="font-size: 40px; margin-bottom: 20px;">Общая сумма: <span th:text="${total}"></span> $</h2>
+		<a href="#">Продолжить покупку</a>
+		</div>
+		<div class="card-list">
+
+			<div th:each="product : ${user.productList}">
+
+				<div class="card-product">
+					<div class="card-img">
+						<img th:src="${product.image}">
+					</div>
+					<h2 th:text="${product.productName}"></h2>
+					<h3 th:text="'Цена: '+${product.productPrice}+ ' $'"></h3>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+</body>
+</html>

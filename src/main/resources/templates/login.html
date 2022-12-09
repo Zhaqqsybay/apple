@@ -1,0 +1,20 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:insert="fragments.html :: headerfiles">
+	<link rel="stylesheet" href="/style.css">
+<title>Log in</title>
+</head>
+<body>
+<form id="new-product-form" th:action="@{/login}" method="post" style="height: 500px;margin-right: auto; margin-left: auto; margin-top: 50px;">
+	<h3>Авторизация</h3>
+
+	<input type="email" id="email" name="email" placeholder="Email">
+	<input type="password" id="password" name="password" placeholder="Пароль">
+	<input type="checkbox" id="checkRememberMe" name="checkRememberMe">
+	<label for="checkRememberMe">Запомнить меня</label>
+	<button type="submit">Войти</button>
+</form>
+<div th:if="${param.error}">Неправильный логин или пароль.</div>
+<div th:if="${param.logout}">Вы вышли с аккаунта.</div>
+
+</body>
+</html>

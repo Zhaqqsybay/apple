@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:insert="fragments.html :: headerfiles">
+</head>
+<body>
+<div class="main-content">
+	<header th:insert="fragments.html :: nav"></header>
+
+	<div>
+	
+	<div style="display: flex">
+			<div class="op-links">
+				<a href="#" th:href="@{/manager/category-form}">Управлять категориями</a>
+				<a href="#" th:href="@{/manager/product-form}">Управлять продуктами</a>
+			</div>
+
+		<form style="margin-left: 200px" th:action="@{/manager/add-category}" method="post">
+			<label for="categoryName">Добавить категорию</label> <br> <input style="width: 300px; height: 30px; border: 1px solid #DBDBDB; padding-left: 10px;" type="text" class="form-control" id="categoryName" name="categoryName" placeholder="Имя категории">
+			<button type="submit" style="height: 34px; width: 150px; background-color: blue; border: none; outline: none; border-radius: 15px; color: white; font-family: 'Manrope', sans-serif ;">Добавить</button>
+		</form>
+		
+	</div>
+		<table>
+			<thead>
+			<tr>
+				<th>ID</td>
+				<th>Имя</td>
+				<th>Действие</td>
+			</tr>
+			</thead>
+			<tbody>
+			<tr th:each="category : ${categoryList}">
+				<td data-label="name" th:text="${category.categoryId}"></td>
+				<td data-label="email" th:text="${category.categoryName}"></td>
+				<td data-label="fullName">
+					<a href="#" style="color: white; padding: 10px; text-decoration: none; color: blue" th:href="@{'/manager/updateCategory/'+ ${category.categoryId}}"
+					   >Update</a>
+					<a href="#" style="color: white; padding: 10px; text-decoration: none; color: red" th:href="@{'/manager/delete-Category/'+ ${category.categoryId}}"
+					   >Delete</a>
+				</td>
+			</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+</body>
+</html>

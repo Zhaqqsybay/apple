@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<!-- Fragment #1 : Headerfiles contains css and js references -->
+<head th:fragment="headerfiles">
+<meta charset="UTF-8">
+<title>Online-Shop</title>
+	<link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+	<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+	<!-- Fragment #2 : Navbar contains nav links -->
+	<div th:fragment="nav">
+		<nav>
+			<div class="op">
+				<a href="#" sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/admin/index}">Панель управления</a>
+				<a href="#" sec:authorize="hasAnyRole('ROLE_MANAGER','ROLE_ADMIN')" th:href="@{/manager/index}">Для модерации</a>
+			</div>
+			<div class="links">
+			<a href="#" th:href="@{/index}">Главная</a>
+			<a href="#" th:href="@{/products}">Продукты</a>
+			<a href="#" th:href="@{/profile/cart-product}">Корзина</a>
+			</div>
+			<div class="auth">
+				<form form-method="post" th:action="@{/logout}">
+					<a sec:authorize="isAuthenticated()" th:href="@{~/logout}" type="submit">Выйти</a>
+					<a sec:authorize="isAnonymous()" th:href="@{~/login}" type="submit">Войти</a>
+				</form>
+			</div>
+		</nav>
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:insert="fragments.html :: headerfiles">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="main-content">
+    <header th:insert="fragments.html :: nav"></header>
+    <div class="product-menu">
+        <h1>Все продукты</h1>
+
+        <div class="product-list">
+
+        <div th:each="product : ${productList}">
+
+        <div class="product">
+            <div class="product-img">
+                <img th:src="${product.image}">
+            </div>
+            <h2 th:text="${product.productName}"></h2>
+            <h4 th:text="${product.productDescription}"></h4>
+            <h3 th:text="'Цена: '+${product.productPrice}+ ' $'"></h3>
+            <button><a style="text-decoration: none; color: white" href="#" th:href="@{'~/profile/addToCart/' + ${product.productId}}">В Корзину</a></button>
+        </div>
+        </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

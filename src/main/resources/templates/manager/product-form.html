@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:insert="fragments.html :: headerfiles">
+</head>
+<body>
+<div class="main-content">
+	<header th:insert="fragments.html :: nav"></header>
+	<div style="display: flex">
+
+			<div class="op-links">
+				<a href="#" th:href="@{/manager/category-form}">Управлять категориями</a>
+				<a href="#" th:href="@{/manager/product-form}">Управлять продуктами</a>
+			</div>
+
+		<div style="margin-left: 200px; margin-top: 50px;">
+			<form id="new-product-form" th:action="@{/manager/add-product}" method="post" enctype="multipart/form-data">
+				<h3>Добавить продукт</h3>
+				<select name="category">
+					<option selected>Выбрать категорию</option>
+					<option th:each="category : ${categoryList}"
+							th:value="${category.categoryId}"
+							th:text="${category.categoryName}"></option>
+				</select>
+				<input type="text" id="productName" name="productName" placeholder="Название продукта">
+				<input type="text" id="productDescription" name="productDescription" placeholder="Описание продукта">
+				<input type="number" id="productPrice" name="productPrice" placeholder="Цена продукта">
+				<input type="number" id="productUnit" name="productUnit" placeholder="Количество продукта">
+				<input type="file" id="file" name="file">
+				<button type="submit" class="btn btn-success">Добавить</button>
+			</form>
+		</div>
+	</div>
+
+		<div class="product-list" style="padding-bottom: 50px;">
+
+			<div th:each="product : ${productList}">
+
+				<div class="product" style="padding-bottom: 10px;">
+					<div class="product-img">
+						<img th:src="${product.image}">
+					</div>
+					<h2 th:text="'ID:' +${product.productId}"></h2>
+					<h2 th:text="${product.productName}"></h2>
+					<h4 th:text="${product.productDescription}"></h4>
+					<h3 style="margin-bottom: 10px" th:text="'Цена: '+${product.productPrice}+ ' $'"></h3>
+					<a style="text-decoration: none; color: blue; margin-right: 5px" href="#" th:href="@{'/manager/update-Product/'+ ${product.productId}}">Редактировать</a>
+					<a style="text-decoration: none; color: #F32424; margin-left: 5px" href="#" th:href="@{'/manager/delete-Product/'+ ${product.productId}}">Удалить</a>
+				</div>
+			</div>
+		</div>
+</div>
+</body>
+</html>
+
+<!--<table class="table my-5">-->
+<!--	<thead>-->
+<!--	<tr>-->
+<!--		<th scope="col">Id</th>-->
+<!--		<th scope="col">Image</th>-->
+<!--		<th scope="col">Product Name</th>-->
+<!--		<th scope="col">Description</th>-->
+<!--		<th scope="col">Price</th>-->
+<!--		<th scope="col">No. of Unit</th>-->
+<!--		<th scope="col">Action</th>-->
+<!--	</tr>-->
+<!--	</thead>-->
+<!--	<tbody>-->
+<!--	<tr th:each="product : ${productList}">-->
+<!--		<th scope="row" th:text="${product.productId}"></th>-->
+<!--		<td><img th:src="${product.image}" width="300px"></td>-->
+<!--		<td th:text="${product.productName}"></td>-->
+<!--		<td th:text="${product.productDescription}"></td>-->
+<!--		<td th:text="${product.productPrice}"></td>-->
+<!--		<td th:text="${product.productUnit}"></td>-->
+<!--		<td>-->
+<!--			<a href="#"-->
+<!--			   th:href="@{'/manager/updateProduct/'+ ${product.productId}}"-->
+<!--			   class="btn btn-danger">Update</a>-->
+<!--			<a href="#"-->
+<!--			   th:href="@{'/manager/delete-Product/'+ ${product.productId}}"-->
+<!--			   class="btn btn-danger">Delete</a>-->
+<!--		</td>-->
+<!--	</tr>-->
+<!--	</tbody>-->
+<!--</table>-->

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:insert="fragments.html :: headerfiles">
+</head>
+<body>
+	<div class="main-content">
+	<header th:insert="fragments.html :: nav"></header>
+		<div class="head-content">
+			<div class="head-text">
+				<p>Привет, <br>
+					</p><b style="font-size: 40px">Встречайте адаптивный дисплей с частотой обновления 120 Гц, который меняет правила игры.
+				</b>
+			</div>
+			<div class="content-video">
+				<video playsinline autoplay muted width="100">
+					<source src="https://www.apple.com/105/media/us/iphone-13-pro/2021/404b23a8-f9c5-466c-b0e6-3d36705b959d/anim/pro-motion/large_2x.mp4" type="video/mp4">
+					Your browser does not support the video tag.
+				</video>
+			</div>
+		</div>
+		<div class="body-content">
+			<h1 style="text-align: center;">Революционный <br> прорыв в <br> технологиях</h1>
+			<div class="body-content-img">
+
+			</div>
+		</div>
+		<div class="oppo">
+			<h1>OPPO Reno7</h1>
+			<p>Димаш Кудайберген в новом ролике</p>
+			<iframe width="1300" height="800" src="https://www.youtube.com/embed/sBBmAe5ur48" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+		</div>
+	</div>
+</body>
+</html>
